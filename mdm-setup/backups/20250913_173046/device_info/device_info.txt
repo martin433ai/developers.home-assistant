@@ -1,0 +1,30 @@
+BasebandCertId: 524245983
+BasebandKeyHashInformation: 
+ AKeyStatus: 64
+ SKeyStatus: 2
+BasebandSerialNumber: j3Y+q6TQdrIAAAAA
+BasebandVersion: 6.03.01
+BoardId: 6
+BuildVersion: 22F76
+CPUArchitecture: arm64e
+ChipID: 32816
+DeviceClass: iPhone
+DeviceColor: 1
+DeviceName: iPhone
+DieID: 906710591635502
+HardwareModel: D421AP
+HasSiDP: true
+HumanReadableProductVersionString: 18.5
+PartitionType: GUID_partition_scheme
+ProductName: iPhone OS
+ProductType: iPhone12,3
+ProductVersion: 18.5
+ProductionSOC: true
+ProtocolVersion: 2
+SupportedDeviceFamilies[1]: 
+ 0: 1
+TelephonyCapability: true
+UniqueChipID: 906710591635502
+UniqueDeviceID: 00008030-000338A602BA802E
+UntrustedHostBUID: 1EB648C8-5B91-497E-BFAA-CAA202EE3FDA
+WiFiAddress: 44:4a:db:bc:17:13

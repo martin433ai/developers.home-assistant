@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.micromdm.server</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/martinpark/mdm-setup/scripts/start-micromdm.sh</string>
+    </array>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/martinpark/mdm-setup/logs/micromdm.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/martinpark/mdm-setup/logs/micromdm.error.log</string>
+    <key>WorkingDirectory</key>
+    <string>/Users/martinpark/mdm-setup</string>
+</dict>
+</plist>

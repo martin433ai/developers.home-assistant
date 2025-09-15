@@ -1,0 +1,17 @@
+{
+  "acls": [
+    {
+      // Allow all connections.
+      // Comment this section out if you want to define specific restrictions.
+      "action": "accept",
+      "src": ["*"],
+      "srcPosture": ["posture:iphone-mac"],
+      "dst": ["*"],
+      "via": ["tag:access-google-workspace"],
+      "ip": ["*"],
+      "app": {
+        "tailscale.com/cap/drive": ["*", "*"]
+      }
+    }
+  ]
+}

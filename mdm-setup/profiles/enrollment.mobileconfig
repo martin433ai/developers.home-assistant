@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadDescription</key>
+            <string>Configures MDM settings</string>
+            <key>PayloadDisplayName</key>
+            <string>MDM</string>
+            <key>PayloadIdentifier</key>
+            <string>com.micromdm.mdm</string>
+            <key>PayloadType</key>
+            <string>com.apple.mdm</string>
+            <key>PayloadUUID</key>
+            <string>00000000-0000-0000-A000-4A414D460003</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>ServerURL</key>
+            <string>https://100.69.185.88:8443/mdm/apple/mdm</string>
+            <key>ServerCapabilities</key>
+            <array>
+                <string>com.apple.mdm.per-user-connections</string>
+            </array>
+            <key>Topic</key>
+            <string>com.micromdm.mdm</string>
+            <key>AccessRights</key>
+            <integer>8191</integer>
+            <key>CheckInURL</key>
+            <string>https://100.69.185.88:8443/mdm/apple/mdm</string>
+            <key>CheckOutWhenRemoved</key>
+            <true/>
+        </dict>
+    </array>
+    <key>PayloadDescription</key>
+    <string>Storage Management and Device Cleanup Profile</string>
+    <key>PayloadDisplayName</key>
+    <string>iPhone Storage Management</string>
+    <key>PayloadIdentifier</key>
+    <string>com.micromdm.storage.management</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>00000000-0000-0000-A000-4A414D460004</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>
