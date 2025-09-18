@@ -1,0 +1,92 @@
+#!/bin/bash
+
+# EAD Networks Server Management Script
+
+SERVER_DIR="/Users/martinpark/eadnets-server"
+PID_FILE="$SERVER_DIR/server.pid"
+LOG_FILE="$SERVER_DIR/server.log"
+
+cd "$SERVER_DIR"
+
+case "$1" in
+    start)
+        if [ -f "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+            echo "EAD Networks server is already running (PID: $(cat "$PID_FILE"))"
+        else
+            echo "🌐 Starting EAD Networks Configuration Server..."
+            nohup ./venv/bin/python3 app.py > "$LOG_FILE" 2>&1 &
+            echo $! > "$PID_FILE"
+            sleep 2
+            if kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+                echo "✅ Server started successfully (PID: $(cat "$PID_FILE"))"
+                echo "📱 Web interface: http://localhost:8080"
+                echo "📋 Logs: tail -f $LOG_FILE"
+            else
+                echo "❌ Failed to start server. Check logs: $LOG_FILE"
+                rm -f "$PID_FILE"
+            fi
+        fi
+        ;;
+    stop)
+        if [ -f "$PID_FILE" ]; then
+            PID=$(cat "$PID_FILE")
+            if kill -0 "$PID" 2>/dev/null; then
+                echo "🛑 Stopping EAD Networks server (PID: $PID)..."
+                kill "$PID"
+                rm -f "$PID_FILE"
+                echo "✅ Server stopped successfully"
+            else
+                echo "⚠️  Server process not found"
+                rm -f "$PID_FILE"
+            fi
+        else
+            echo "⚠️  Server is not running"
+        fi
+        ;;
+    restart)
+        $0 stop
+        sleep 2
+        $0 start
+        ;;
+    status)
+        if [ -f "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+            echo "✅ EAD Networks server is running (PID: $(cat "$PID_FILE"))"
+            echo "📱 Web interface: http://localhost:8080"
+            echo "🔍 API status:"
+            curl -s http://localhost:8080/api/status | python3 -m json.tool 2>/dev/null || echo "   API not responding"
+        else
+            echo "❌ EAD Networks server is not running"
+            rm -f "$PID_FILE"
+        fi
+        ;;
+    logs)
+        if [ -f "$LOG_FILE" ]; then
+            echo "📋 Server logs (last 50 lines):"
+            echo "================================"
+            tail -50 "$LOG_FILE"
+            echo "================================"
+            echo "💡 To follow logs in real-time: tail -f $LOG_FILE"
+        else
+            echo "⚠️  No log file found at $LOG_FILE"
+        fi
+        ;;
+    open)
+        echo "🌐 Opening EAD Networks Configuration Server in browser..."
+        open http://localhost:8080
+        ;;
+    *)
+        echo "EAD Networks Configuration Server Management"
+        echo "Usage: $0 {start|stop|restart|status|logs|open}"
+        echo ""
+        echo "Commands:"
+        echo "  start   - Start the server"
+        echo "  stop    - Stop the server"
+        echo "  restart - Restart the server"
+        echo "  status  - Check server status"
+        echo "  logs    - Show recent logs"
+        echo "  open    - Open web interface in browser"
+        echo ""
+        echo "Web Interface: http://localhost:8080"
+        exit 1
+        ;;
+esac
